@@ -36,7 +36,6 @@ public class MealController {
     @ResponseBody
     public boolean addMeal(String mName,String univalent) {
         double univalent1 = univalent==null ? 0:Double.parseDouble(univalent);
-        System.out.println(4645);
         return mealService.addMeal(mName,univalent1);
     }
 }

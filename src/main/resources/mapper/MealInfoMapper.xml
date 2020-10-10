@@ -3,5 +3,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace目前可以自定义要唯一，将来面向接口编程时对应dao接口，一个mapper相当于一个dao接口的实现类 -->
 <mapper namespace="com.jxd.dao.IMealInfoDao">
-
+<!--    List<MealInfo> getAllMealInfo(@Param("empno") int empno);-->
+<!--    List<MealInfo> getAllMealInfoByPage(@Param("empno") int empno,@Param("pageIndex") int pageIndex,@Param("pageSize") int pageSize);-->
+<!--    boolean updMealInfoState(@Param("onum") int onum,@Param("state") int state);-->
+<!--    boolean addMealInfo(MealInfo mealInfo);-->
+<!--    List<MealInfo> getAllMealInfoByEmp(@Param("anum") int anum);-->
+<!--    List<MealInfo> getAllMealInfoByEmpAndPage(@Param("anum") int anum,@Param("pageIndex") int pageIndex,@Param("pageSize") int pageSize);-->
 </mapper>

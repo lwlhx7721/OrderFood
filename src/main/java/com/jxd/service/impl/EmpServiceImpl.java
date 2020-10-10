@@ -22,31 +22,32 @@ public class EmpServiceImpl implements IEmpService {
 
     @Override
     public List<Map<String, Object>> getAllEmp(String ename, int deptno) {
-        return null;
+        return empDao.getAllEmp(ename,deptno);
     }
 
     @Override
     public List<Map<String, Object>> getEmpByPage(String eName, int deptno, int pageIndex, int pageSize) {
-        return null;
+        int index = (pageIndex - 1) * pageSize;
+        return empDao.getEmpByPage(eName,deptno,index,pageSize);
     }
 
     @Override
     public boolean addEmp(Emp emp) {
-        return false;
+        return empDao.addEmp(emp);
     }
 
     @Override
     public boolean updEmp(Emp emp) {
-        return false;
+        return empDao.updEmp(emp);
     }
 
     @Override
     public boolean delEmp(int empno) {
-        return false;
+        return empDao.delEmp(empno);
     }
 
     @Override
     public Emp getEmpByEmpno(int empno) {
-        return null;
+        return empDao.getEmpByEmpno(empno);
     }
 }

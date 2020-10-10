@@ -35,4 +35,14 @@ public class DeptServiceImpl implements IDeptService {
     public boolean addDept(String dName) {
         return deptDao.addDept(dName);
     }
+
+    @Override
+    public boolean updDept(String dName) {
+        return deptDao.updDept(dName);
+    }
+
+    @Override
+    public boolean delDept(int deptno) {
+        return deptDao.delDept(deptno);
+    }
 }

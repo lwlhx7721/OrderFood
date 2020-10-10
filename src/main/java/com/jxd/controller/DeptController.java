@@ -38,4 +38,14 @@ public class DeptController {
     public boolean addDepts(String dName) {
         return deptService.addDept(dName);
     }
+
+    /*@RequestMapping("updDept")
+    public String updDept() {
+        return "updDept";
+    }
+    @RequestMapping("toUpdDepts")
+    @ResponseBody
+    public boolean updDepts(String dName) {
+        return deptService.updDept(dName);
+    }*/
 }

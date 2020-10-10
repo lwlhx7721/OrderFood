@@ -1,6 +1,9 @@
 package com.jxd.controller;
 
+import com.jxd.model.MealInfo;
 import org.springframework.stereotype.Controller;
+
+import java.util.List;
 
 /**
  * @program: OrderFood
@@ -10,4 +13,5 @@ import org.springframework.stereotype.Controller;
  **/
 @Controller
 public class MealInfoController {
+
 }

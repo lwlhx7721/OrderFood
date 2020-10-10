@@ -1,6 +1,7 @@
 package com.jxd.service.impl;
 
 import com.jxd.dao.IMealDao;
+import com.jxd.model.Meal;
 import com.jxd.service.IMealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,15 @@ public class MealServiceImpl implements IMealService {
     @Override
     public boolean addMeal(String mName, double univalent) {
         return mealDao.addMeal(mName,univalent);
+    }
+
+    @Override
+    public boolean updMeal(Meal meal) {
+        return mealDao.updMeal(meal);
+    }
+
+    @Override
+    public boolean delMeal(int mId) {
+        return mealDao.delMeal(mId);
     }
 }

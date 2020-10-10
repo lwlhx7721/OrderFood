@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface IEmpService {
-    List<Map<String,Object>> getAllEmp(@Param("ename") String ename, @Param("deptno") int deptno);
-    List<Map<String,Object>> getEmpByPage(@Param("ename") String eName,@Param("deptno") int deptno, @Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);
+    List<Map<String,Object>> getAllEmp(String ename, int deptno);
+    List<Map<String,Object>> getEmpByPage(String eName,int deptno,int pageIndex,int pageSize);
     boolean addEmp(Emp emp);
     boolean updEmp(Emp emp);
     boolean delEmp(int empno);
