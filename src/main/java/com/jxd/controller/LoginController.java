@@ -19,4 +19,23 @@ public class LoginController {
         return "false";
     }
 
+    @RequestMapping("/admin")
+    public String admin() {
+        return "admin";
+    }
+
+    @RequestMapping("/sysadmin")
+    public String sysadmin() {
+        return "sysadmin";
+    }
+
+    @RequestMapping("/manager")
+    public String manager() {
+        return "manager";
+    }
+
+    @RequestMapping("/emp")
+    public String emp() {
+        return "emp";
+    }
 }
