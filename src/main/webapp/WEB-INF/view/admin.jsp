@@ -83,7 +83,7 @@
     <div id="left">
         <ul class="layui-nav layui-nav-tree layui-bg-green" lay-filter="demo" style="margin: 1px;margin-top: 20px" id="leftDemo">
             <li class="layui-nav-item bluebtn" id="li1">
-                <a href="empList" target="main">员工管理</a>
+                <a href="empLists" target="main">员工管理</a>
             </li>
             <li class="layui-nav-item" id="li2">
                 <a href="deptList" target="main">部门管理</a>

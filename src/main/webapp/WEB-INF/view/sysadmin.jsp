@@ -23,8 +23,6 @@
             <li class="layui-nav-item">
                 <a href="javascript:">${sessionScope.loginUser.userName}</a>
                 <dl class="layui-nav-child" style="background-color: #009688">
-                    <dd><a id="updSelf">修改个人资料</a></dd>
-                    <dd><a id="updSelfPwd">修改密码</a></dd>
                     <dd><a href="logout">退出</a></dd>
                 </dl>
             </li>
@@ -114,14 +112,14 @@
             };
 
             table.render({
-                elem: '#deptList'//对应table的id属性
-                ,url:'getDeptList'
+                elem: ''//对应table的id属性
+                ,url:'getList'//后台订餐表数据
                 ,width: 1150
                 ,height: 500
                 ,cols: [[
                     {type:'checkbox'}
                     ,{type:'numbers',title: '序号'}
-                    ,{field:'deptno',title:'部门编号',sort:true}
+                    ,{field:'',title:'',sort:true}
                     ,{field:'dName',title: '部门名称'}
                     ,{fixed:'right',title: '操作', align:'center', toolbar: '#barDemo'}
                 ]]
@@ -136,7 +134,7 @@
                         "data": res.list //解析数据列表
                     };
                 }
-                ,id: 'deptList'
+                ,id: ''
             });
             //监听工具条
             table.on('tool(demo)', function(obj){
@@ -144,33 +142,12 @@
                 if(obj.event == 'udp'){
                     layer.open({
                         type:2,
-                        content:'',
+                        content:'跳转后台controller修改状态信息',
                         title:"修改信息",
                         area:['800px','500px'],//设置弹框的宽高
                     }),
-                        table.reload("deptList",  {
-                            url:"getDeptList"
-                        })
-                } else if(obj.event == 'del'){
-                    //删除消息
-                    layer.confirm('确定删除吗', '删除指令', function(){
-                        $.ajax({
-                            type: "post",
-                            url: "delDeptById",
-                            data: {
-                                deptno:data.deptno
-                            },
-                            dataType: "text",
-                            success: function(data) {
-                                layer.msg(data);
-                                table.reload("deptList",  {
-                                    url: "getDeptList"
-                                })
-                            },
-                            error: function (data) {
-                                layer.msg("执行失败");
-                            }
-                        })
+                    table.reload("表格id",  {
+                        url:"后台订餐表数据"
                     })
                 }
             });

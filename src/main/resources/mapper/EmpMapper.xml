@@ -4,9 +4,56 @@
 <!-- namespace目前可以自定义要唯一，将来面向接口编程时对应dao接口，一个mapper相当于一个dao接口的实现类 -->
 <mapper namespace="com.jxd.dao.IEmpDao">
 <!--    List<Map<String,Object>> getAllEmp(@Param("ename") String ename,@Param("deptno") int deptno);-->
+    <select id="getAllEmp" resultType="map">
+        SELECT d.dname,e.empno,e.pwd,e.ename,e.sex,e.contact,e.deptno,e.position
+        FROM emp AS e
+        INNER JOIN dept AS d ON e.deptno = d.deptno
+        <where>
+            e.ename like concat('%',#{ename},'%')
+        <if test="deptno != 0">
+            and e.deptno = #{deptno}
+        </if>
+        </where>
+    </select>
 <!--    List<Map<String,Object>> getEmpByPage(@Param("ename") String eName,@Param("deptno") int deptno, @Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);-->
-<!--    boolean addEmp(Emp emp);-->
+    <select id="getEmpByPage" resultType="map">
+        SELECT d.dname,e.empno,e.pwd,e.ename,e.sex,e.contact,e.deptno,e.position
+        FROM emp AS e
+        INNER JOIN dept AS d ON e.deptno = d.deptno
+        <where>
+            e.ename like concat('%',#{ename},'%')
+            <if test="deptno != 0">
+                and e.deptno = #{deptno}
+            </if>
+        </where>
+        order by e.empno limit #{pageIndex},#{pageSize}
+    </select>
+    <!--    boolean addEmp(Emp emp);-->
+    <insert id="addEmp">
+      insert into emp(ename,sex,contact,position,deptno,pwd)
+       values(#{ename},#{sex},#{contact},#{position},#{deptno},#{pwd})
+    </insert>
 <!--    boolean updEmp(Emp emp);-->
+    <update id="updEmp">
+        update emp set ename = #{ename}, sex = #{sex}, contact = #{contact}, pwd = #{pwd}, deptno = #{deptno}, position = #{position} where empno = #{empno};
+    </update>
 <!--    boolean delEmp(int empno);-->
+    <delete id="delEmp">
+        delete from emp where empno = #{empno}
+    </delete>
 <!--    Emp getEmpByEmpno(int empno);-->
+    <select id="getEmpByEmpno" resultType="Emp" >
+        SELECT
+        emp.pwd,
+        emp.ename,
+        emp.contact,
+        emp.position,
+        emp.sex,
+        emp.empno,
+        emp.deptno
+        FROM
+        emp
+        WHERE
+        emp.empno = #{empno}
+    </select>
 </mapper>
