@@ -18,8 +18,12 @@
         </insert>
 
     <update id="updMeal">
-        update meal set mName = #{mName},univalent = #{univalent}, where mId = #{mId}
+        update meal set mName = #{mName},univalent = #{univalent} where mId = #{mId}
     </update>
+
+    <delete id="delMeal">
+        delete from meal where mid = #{mId}
+    </delete>
 
 <!--    List<Map<String,Object>> getAllMeal(String mName);-->
 <!--    List<Map<String,Object>> getMealByPage(@Param("mName") String mName, @Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);-->

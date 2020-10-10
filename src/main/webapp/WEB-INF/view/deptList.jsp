@@ -86,7 +86,7 @@
             if(obj.event == 'udp'){
                 layer.open({
                     type:2,
-                    content:'',
+                    content:'updDept?deptno=' + data.deptno + '&dName=' + data.dName,
                     title:"修改信息",
                     area:['800px','500px'],//设置弹框的宽高
                 }),
@@ -110,7 +110,7 @@
                             })
                         },
                         error: function (data) {
-                            layer.msg("执行失败");
+                            layer.msg("请先将员工移至其他部门再删除");
                         }
                     })
                 })

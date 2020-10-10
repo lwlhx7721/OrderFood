@@ -9,6 +9,6 @@ public interface IDeptDao {
     List<Dept> getAllDept(String dName);
     List<Dept> getDeptByPage(@Param("dName") String dName, @Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);
     boolean addDept(String dName);
-    boolean updDept(String dName);
+    boolean updDept(Dept dept);
     boolean delDept(int deptno);
 }

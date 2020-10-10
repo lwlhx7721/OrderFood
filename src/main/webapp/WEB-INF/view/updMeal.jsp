@@ -14,16 +14,17 @@
 </head>
 <body>
 <div class="layui-form">
+    <input type="hidden" name="mId" id="mId" value="${meal.mId}">
     <div class="layui-form-item">
         <label class="layui-form-label">餐品名称</label>
         <div class="layui-input-inline">
-            <input type="text" id="mName" name="mName" required  lay-verify="required" placeholder="请输入餐品名称" autocomplete="off" class="layui-input">
+            <input type="text" id="mName" name="mName" required  lay-verify="required" value="${meal.mName}" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">单价</label>
         <div class="layui-input-inline">
-            <input type="text" id="univalent" name="univalent" required  lay-verify="required" placeholder="请输入单价" autocomplete="off" class="layui-input">
+            <input type="text" id="univalent" name="univalent" required  lay-verify="required" value="${meal.univalent}" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
@@ -48,11 +49,11 @@
         $("#ok").click(function () {
             $.ajax({
                 type: "post",
-                url:"updMeal",
+                url:"updMeals",
                 data: {
-                    mId: ${mId},
+                    mId: $("#mId").val(),
                     mName: $("#mName").val(),
-                    univalent: $("univalent").val(),
+                    univalent: $("#univalent").val(),
                 },
                 dataType: "text",
                 success: function (data) {

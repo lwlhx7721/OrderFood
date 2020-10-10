@@ -87,7 +87,7 @@
             if(obj.event == 'udp'){
                 layer.open({
                     type:2,
-                    content:'updMeal?mId='+data.mId,
+                    content:'updMeal?mId='+data.mId + '&mName=' + data.mName + '&univalent=' + data.univalent,
                     title:"修改信息",
                     area:['800px','500px'],//设置弹框的宽高
                 }),
@@ -99,19 +99,19 @@
                 layer.confirm('确定删除吗', '删除指令', function(){
                     $.ajax({
                         type: "post",
-                        url: "delDeptById",
+                        url: "delMealById",
                         data: {
-                            deptno:data.deptno
+                            mId:data.mId
                         },
                         dataType: "text",
                         success: function(data) {
                             layer.msg(data);
                             table.reload("MealList",  {
-                                url: "getMealFList"
+                                url: "getMealList"
                             })
                         },
                         error: function (data) {
-                            layer.msg("执行失败");
+                            layer.msg("该餐品一有人购买，暂时无法删除");
                         }
                     })
                 })

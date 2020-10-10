@@ -5,6 +5,7 @@ import com.jxd.model.PageList;
 import com.jxd.service.IDeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -40,12 +41,27 @@ public class DeptController {
     }
 
     @RequestMapping("updDept")
-    public String updDept() {
+    public String updDept(String deptno,String dName, Model model) {
+        int id = deptno == null ? 0:Integer.parseInt(deptno);
+        Dept dept = new Dept(id,dName);
+        model.addAttribute("dept",dept);
         return "updDept";
     }
-    @RequestMapping("toUpdDepts")
+
+    @RequestMapping("updDepts")
     @ResponseBody
-    public boolean updDepts(String dName) {
-        return deptService.updDept(dName);
+    public boolean updDepts(Dept dept) {
+        return deptService.updDept(dept);
+    }
+
+    @RequestMapping(value = "delDeptById",produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String delDeptById(String deptno) {
+        int id = deptno == null ? 0:Integer.parseInt(deptno);
+        if(deptService.delDept(id)) {
+            return "删除成功";
+        } else {
+            return "删除失败";
+        }
     }
 }

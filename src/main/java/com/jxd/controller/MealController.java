@@ -5,6 +5,7 @@ import com.jxd.model.PageList;
 import com.jxd.service.IMealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,15 +42,27 @@ public class MealController {
     }
 
     @RequestMapping("updMeal")
-    public String updMeal() {
+    public String updMeal(String mId,String mName,String univalent, Model model) {
+        int id = mId == null ? 0:Integer.parseInt(mId);
+        Meal meal = new Meal(id,mName,Double.parseDouble(univalent));
+        model.addAttribute("meal",meal);
         return "updMeal";
     }
-    @RequestMapping("toUpdMeal")
+
+    @RequestMapping("updMeals")
     @ResponseBody
-    public boolean updMeal(Meal meal) {
-        if(meal.getmName() == null ) {
-            return false;
-        }
+    public boolean updMeals(Meal meal) {
         return mealService.updMeal(meal);
+    }
+
+    @RequestMapping(value = "delMealById",produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String delMealById(String mId) {
+        int id = mId == null ? 0:Integer.parseInt(mId);
+        if(mealService.delMeal(id)) {
+            return "删除成功";
+        } else {
+            return "删除失败";
+        }
     }
 }

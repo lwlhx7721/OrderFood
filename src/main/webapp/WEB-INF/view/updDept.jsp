@@ -14,10 +14,11 @@
 </head>
 <body>
 <div class="layui-form">
+    <input type="hidden" id="deptno" name="deptno" value="${dept.deptno}">
     <div class="layui-form-item">
         <label class="layui-form-label">部门名称</label>
         <div class="layui-input-inline">
-            <input type="text" id="dName" name="dName" required  lay-verify="required" placeholder="请输入部门名称" autocomplete="off" class="layui-input">
+            <input type="text" id="dName" name="dName" required  lay-verify="required" value="${dept.dName}" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
@@ -41,9 +42,9 @@
         $("#ok").click(function () {
             $.ajax({
                 type: "post",
-                url:"updDept",
+                url:"updDepts",
                 data: {
-                    deptno: $("#deptno"),
+                    deptno: $("#deptno").val(),
                     dName: $("#dName").val(),
                 },
                 dataType: "text",

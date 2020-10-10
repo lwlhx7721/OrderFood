@@ -53,8 +53,9 @@
         <div class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label">职位</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="position" name="position" required  lay-verify="required" placeholder="请输入职位" autocomplete="off" class="layui-input">
+                <div class="layui-input-block">
+                    <input type="radio" name="position" value="manager" title="部门经理" checked>
+                    <input type="radio" name="position" value="emp" title="普通员工">
                 </div>
             </div>
         </div>

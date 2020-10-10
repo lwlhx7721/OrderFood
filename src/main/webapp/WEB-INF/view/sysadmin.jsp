@@ -21,7 +21,7 @@
         <a href="#"><img src="../../static/images/header.png" alt=""></a>
         <ul class="layui-nav" style="height: 60px;float: right;background-color: #265160">
             <li class="layui-nav-item">
-                <a href="javascript:">${sessionScope.loginUser.userName}</a>
+                <a href="javascript:">sysadmin</a>
                 <dl class="layui-nav-child" style="background-color: #009688">
                     <dd><a href="logout">退出</a></dd>
                 </dl>
@@ -31,16 +31,7 @@
     </div>
     <div id="right">
         <div id="body">
-            <div align="center" class="layui-form">
-                <div class="demoTable">
-                    <div class="layui-inline">
-                        <input class="layui-input" style="width: 200px;" name="name" id="name" placeholder="请输入名字查找" autocomplete="off">
-                    </div>
-                    <button class="layui-btn" style="width: 100px;background-color: skyblue;;margin-left: 10px;" data-type="reload">查询</button>
-                    <button class="layui-btn" style="width: 100px;background-color: skyblue;margin-left: 60px;" data-type="add">添加</button>
-                </div>
-                <table class="layui-hide" id="deptList"  lay-filter="demo" lay-skin="nob"></table>
-            </div>
+            <iframe src="MIsys" name="main" scrolling="no"></iframe>
         </div>
         <div id="footer">
             @2020&nbsp;&nbsp;金桥教务查询系统&nbsp;&nbsp;

@@ -54,7 +54,6 @@ public class EmpController {
     @RequestMapping("addEmpForm")
     @ResponseBody
     public boolean addEmps(Emp emp,String ename) {
-        System.out.println(ename);
         return empService.addEmp(emp);
     }
 

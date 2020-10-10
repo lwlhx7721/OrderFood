@@ -37,8 +37,8 @@ public class DeptServiceImpl implements IDeptService {
     }
 
     @Override
-    public boolean updDept(String dName) {
-        return deptDao.updDept(dName);
+    public boolean updDept(Dept dept) {
+        return deptDao.updDept(dept);
     }
 
     @Override

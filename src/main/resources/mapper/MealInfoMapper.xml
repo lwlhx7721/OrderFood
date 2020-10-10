@@ -4,9 +4,51 @@
 <!-- namespace目前可以自定义要唯一，将来面向接口编程时对应dao接口，一个mapper相当于一个dao接口的实现类 -->
 <mapper namespace="com.jxd.dao.IMealInfoDao">
 <!--    List<MealInfo> getAllMealInfo(@Param("empno") int empno);-->
+    <select id="getAllMealInfo" resultType="MealInfo">
+        SELECT oNum,aTime,aNum,mId,oType,amount,total,state,remarks
+        FROM mealInfo
+        where anum in (select empno from emp
+        <where>
+            <if test="deptno != 0">
+                deptno = #{empno}
+            </if>
+        </where>
+         )
+
+    </select>
 <!--    List<MealInfo> getAllMealInfoByPage(@Param("empno") int empno,@Param("pageIndex") int pageIndex,@Param("pageSize") int pageSize);-->
-<!--    boolean updMealInfoState(@Param("onum") int onum,@Param("state") int state);-->
+    <select id="getAllMealInfoByPage" resultType="MealInfo">
+        SELECT oNum,aTime,aNum,mId,oType,amount,total,state,remarks
+        FROM mealInfo
+        where onum in (select empno from emp
+        <where>
+            <if test="deptno != 0">
+                deptno = #{empno}
+            </if>
+        </where>
+        )
+        order by onum limit #{pageIndex},#{pageSize}
+    </select>
+    <!--    boolean updMealInfoState(@Param("onum") int onum,@Param("state") int state);-->
+    <update id="updMealInfoState">
+        update mealinfo set state = #{state} where onum = #{onum};
+    </update>
 <!--    boolean addMealInfo(MealInfo mealInfo);-->
+    <insert id="addMealInfo">
+      insert into mealInfo(atime,anum,mid,otype,amount,total,state,remarks)
+       values(#{aTime},#{aNum},#{mId},#{oType},#{amount},#{total},0,#{remarks})
+    </insert>
 <!--    List<MealInfo> getAllMealInfoByEmp(@Param("anum") int anum);-->
+    <select id="getAllMealInfoByEmp" resultType="MealInfo">
+        SELECT oNum,aTime,aNum,mId,oType,amount,total,state,remarks
+        FROM mealInfo
+        where anum = #{anum}
+    </select>
 <!--    List<MealInfo> getAllMealInfoByEmpAndPage(@Param("anum") int anum,@Param("pageIndex") int pageIndex,@Param("pageSize") int pageSize);-->
+    <select id="getAllMealInfoByEmpAndPage" resultType="MealInfo">
+        SELECT oNum,aTime,aNum,mId,oType,amount,total,state,remarks
+        FROM mealInfo
+        where anum = #{anum}
+        order by onum limit #{pageIndex},#{pageSize}
+    </select>
 </mapper>
