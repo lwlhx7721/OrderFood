@@ -87,7 +87,7 @@
             if(obj.event == 'udp'){
                 layer.open({
                     type:2,
-                    content:'',
+                    content:'updMeal?mId='+data.mId,
                     title:"修改信息",
                     area:['800px','500px'],//设置弹框的宽高
                 }),

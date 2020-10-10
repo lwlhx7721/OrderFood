@@ -18,6 +18,10 @@
     <insert id="addDept">
         insert into Dept (dName) values (#{dName})
     </insert>
+
+    <update id="updDept">
+        update dept set dName = #{dName} where deptno = #{deptno}
+    </update>
 <!--    List<Dept> getAllDept(String dName);-->
 <!--    List<Dept> getDeptByPage(@Param("dName") String dName, @Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);-->
 <!--    boolean addDept(String dName);-->

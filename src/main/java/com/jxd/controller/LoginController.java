@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * @program: OrderFood
  * @description:
  * @author: WMR
- * @create: 2020-10-10 08:43
+ * @create: 2020-9-25 08:43
  **/
 @Controller
 @SessionAttributes({"user"})
@@ -36,9 +36,10 @@ public class LoginController {
             return "sysadmin";
         }
         Emp emp = empService.getEmpByEmpno(Integer.parseInt(username));
-        if(!pwd.equals(emp.getPwd())) {
+        if(Integer.parseInt(pwd) != emp.getPwd()) {
             return "false";
         }
+        System.out.println(emp.getPosition());
         if("manager".equals(emp.getPosition())) {
             model.addAttribute("user",emp);
             return "manager";

@@ -17,6 +17,10 @@
             insert into Meal(mName,univalent) values (#{mName},#{univalent})
         </insert>
 
+    <update id="updMeal">
+        update meal set mName = #{mName},univalent = #{univalent}, where mId = #{mId}
+    </update>
+
 <!--    List<Map<String,Object>> getAllMeal(String mName);-->
 <!--    List<Map<String,Object>> getMealByPage(@Param("mName") String mName, @Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);-->
 <!--    boolean addMeal(@Param("mName") String mName,@Param("univalent") double univalent);-->

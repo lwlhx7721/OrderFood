@@ -1,5 +1,6 @@
 package com.jxd.controller;
 
+import com.jxd.model.Meal;
 import com.jxd.model.PageList;
 import com.jxd.service.IMealService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @program: OrderFood
  * @description:
  * @author: WMR
- * @create: 2020-10-09 09:19
+ * @create: 2020-9-25 09:19
  **/
 @Controller
 public class MealController {
@@ -37,5 +38,18 @@ public class MealController {
     public boolean addMeal(String mName,String univalent) {
         double univalent1 = univalent==null ? 0:Double.parseDouble(univalent);
         return mealService.addMeal(mName,univalent1);
+    }
+
+    @RequestMapping("updMeal")
+    public String updMeal() {
+        return "updMeal";
+    }
+    @RequestMapping("toUpdMeal")
+    @ResponseBody
+    public boolean updMeal(Meal meal) {
+        if(meal.getmName() == null ) {
+            return false;
+        }
+        return mealService.updMeal(meal);
     }
 }

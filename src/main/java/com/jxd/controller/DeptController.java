@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @program: OrderFood
  * @description:
  * @author: WMR
- * @create: 2020-10-09 09:19
+ * @create: 2020-9-25 09:19
  **/
 @Controller
 public class DeptController {
@@ -39,7 +39,7 @@ public class DeptController {
         return deptService.addDept(dName);
     }
 
-    /*@RequestMapping("updDept")
+    @RequestMapping("updDept")
     public String updDept() {
         return "updDept";
     }
@@ -47,5 +47,5 @@ public class DeptController {
     @ResponseBody
     public boolean updDepts(String dName) {
         return deptService.updDept(dName);
-    }*/
+    }
 }
